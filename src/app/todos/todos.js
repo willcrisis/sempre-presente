@@ -6,43 +6,54 @@ const initialTodo = {
 
 class TodoService {
   addTodo(text, todos) {
-    return [
-      {
-        id: (todos.length === 0) ? 0 : todos[0].id + 1,
-        completed: false,
-        text
-      }
-    ].concat(todos);
+    todos.$add({
+      completed: false,
+      text
+    });
+    return todos;
   }
 
   completeTodo(id, todos) {
-    return todos.map(todo => {
-      return todo.id === id ?
-        Object.assign({}, todo, {completed: !todo.completed}) :
-        todo;
+    let encontrado = todos.find(todo => {
+      return todo.$id === id;
     });
+    encontrado.completed = !encontrado.completed;
+    todos.$save(encontrado);
+    return todos;
   }
 
   deleteTodo(id, todos) {
-    return todos.filter(todo => todo.id !== id);
+    todos.$remove(todos.find(todo => {
+      return todo.$id === id;
+    }));
+    return todos;
   }
 
   editTodo(id, text, todos) {
-    return todos.map(todo => {
-      return todo.id === id ?
-        Object.assign({}, todo, {text}) :
-        todo;
+    let encontrado = todos.find(todo => {
+      return todo.$id === id;
     });
+    encontrado.text = text;
+    todos.$save(encontrado);
+    return todos;
   }
 
   completeAll(todos) {
     const areAllMarked = todos.every(todo => todo.completed);
-    return todos.map(todo => Object.assign({}, todo, {completed: !areAllMarked}));
+    todos.forEach(todo => {
+      todo.completed = !areAllMarked;
+      todos.$save(todo);
+    });
+    return todos;
   }
 
   clearCompleted(todos) {
-    return todos.filter(todo => {
-      return todo.completed === false;
+    let completados = todos.filter(todo => {
+      return todo.completed === true;
     });
+    completados.forEach(todo => {
+      todos.$remove(todo);
+    });
+    return todos;
   }
 }

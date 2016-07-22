@@ -10,6 +10,14 @@ class Header {
       this.todos = this.todoService.addTodo(text, this.todos);
     }
   }
+
+  loginComGoogle() {
+    this.auth.loginWithGoogle();
+  }
+
+  logout() {
+    this.auth.logout();
+  }
 }
 
 angular

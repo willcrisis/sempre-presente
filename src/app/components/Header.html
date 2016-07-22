@@ -1,6 +1,12 @@
-  <button type="button" ng-click="$ctrl.auth.loginWithGoogle()" ng-if="!$ctrl.auth.loggedIn">Login com Google</button>
-  <p ng-if="$ctrl.auth.loggedIn">Olá, <auth-display-name></auth-display-name></p>
-  <button type="button" ng-click="$ctrl.auth.logout()" ng-if="$ctrl.auth.loggedIn">Logout</button>
+<auth-logged-in>
+  <p>Olá, <auth-display-name></auth-display-name></p>
+  <button type="button" ng-click="$ctrl.logout()">Logout</button>
+</auth-logged-in>
+<auth-not-logged-in>
+  <button type="button" ng-click="$ctrl.loginComGoogle()">Login com Google</button>
+</auth-not-logged-in>
+
+
 
 <header class="header">
   <h1>todos</h1>
