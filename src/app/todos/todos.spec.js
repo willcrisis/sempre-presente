@@ -10,7 +10,7 @@ describe('TodoService', () => {
   it('should add a todo to the list', () => {
     const res = todoService.addTodo('Hello', todos);
     expect(res.length).toEqual(2);
-    expect(res[0].id).toEqual(1);
+    expect(res[0].$id).toEqual(1);
   });
 
   it('should complete a todo', () => {

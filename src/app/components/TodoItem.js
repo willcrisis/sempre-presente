@@ -11,7 +11,7 @@ class TodoItem {
     this.onSave({
       todo: {
         text,
-        id: this.todo.id
+        $id: this.todo.$id
       }
     });
     this.editing = false;

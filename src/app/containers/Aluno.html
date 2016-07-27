@@ -1,0 +1,14 @@
+<form name="alunoForm" ng-submit="alunoForm.$valid && $ctrl.save($ctrl.aluno)">
+  <labeled-input label="Nome" name="nome" ng-model="$ctrl.aluno.nome" ng-required="true"></labeled-input>
+  <labeled-input label="Data de Nascimento" name="dataNascimento" ng-model="$ctrl.aluno.dataNascimento"
+                 ng-required="true" type="date"></labeled-input>
+  <labeled-input label="Telefone" name="telefone" ng-model="$ctrl.aluno.telefone"></labeled-input>
+  <labeled-input label="Nome do Pai" name="pai" ng-model="$ctrl.aluno.pai"></labeled-input>
+  <labeled-input label="Nome da Mãe" name="mae" ng-model="$ctrl.aluno.mae"></labeled-input>
+  <labeled-input label="Telefone do Responsável" name="telefoneResponsavel"
+                 ng-model="$ctrl.aluno.telefoneResponsavel"></labeled-input>
+
+  <div class="action-buttons">
+    <button class="btn btn-primary" type="submit">Salvar</button>
+  </div>
+</form>

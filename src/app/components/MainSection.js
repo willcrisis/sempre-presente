@@ -24,10 +24,11 @@ class MainSection {
   }
 
   handleSave(e) {
+    console.log(e);
     if (e.text.length === 0) {
-      this.todos = this.todoService.deleteTodo(e.id, this.todos);
+      this.todos = this.todoService.deleteTodo(e.$id, this.todos);
     } else {
-      this.todos = this.todoService.editTodo(e.id, e.text, this.todos);
+      this.todos = this.todoService.editTodo(e.$id, e.text, this.todos);
     }
   }
 

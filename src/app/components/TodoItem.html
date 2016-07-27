@@ -2,6 +2,7 @@
   <todo-text-input
     ng-if="$ctrl.editing"
     text="$ctrl.todo.text"
+    id="$ctrl.todo.$id"
     editing="$ctrl.editing"
     on-save="$ctrl.handleSave(text)"
     ></todo-text-input>

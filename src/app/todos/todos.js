@@ -30,9 +30,7 @@ class TodoService {
   }
 
   editTodo(id, text, todos) {
-    let encontrado = todos.find(todo => {
-      return todo.$id === id;
-    });
+    let encontrado = todos.$getRecord(id);
     encontrado.text = text;
     todos.$save(encontrado);
     return todos;

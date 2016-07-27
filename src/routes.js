@@ -10,6 +10,41 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state('app', {
       url: '/',
-      template: '<app></app>'
+      template: '<app></app>',
+      auth: true
+    })
+    .state('alunos', {
+      url: '/alunos',
+      template: '<alunos></alunos>',
+      auth: true
+    })
+    .state('professores', {
+      url: '/professores',
+      template: '<professores></professores>',
+      auth: true
+    })
+    .state('aluno', {
+      url: '/aluno/:id',
+      controller: AlunoRoute,
+      controllerAs: 'ctrl',
+      template: '<aluno id="ctrl.id"></aluno>',
+      auth: true
+    })
+    .state('professor', {
+      url: '/professor',
+      template: '<professor></professor>',
+      auth: true
+    })
+    .state('login', {
+      url: '/login',
+      template: '<login></login>',
+      auth: false
     });
+}
+
+class AlunoRoute {
+  /** @ngInject */
+  constructor($stateParams) {
+    this.id = $stateParams.id;
+  }
 }

@@ -1,7 +1,7 @@
 class App {
   /** @ngInject */
   constructor($firebaseArray) {
-    var ref = firebase.database().ref().child('todos');
+    let ref = firebase.database().ref().child('todos');
     this.todos = $firebaseArray(ref);
     this.filter = SHOW_ALL;
   }
