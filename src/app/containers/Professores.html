@@ -1,27 +1,24 @@
-<div class="panel panel-default col-sm-3" ui-sref="professor">
-  <div class="panel-body">
-    <div class="media">
-      <div class="media-left">
-        <i class="fa fa-plus fa-4x media-object"></i>
-      </div>
-      <div class="media-body">
-        <h4 class="media-heading">Novo Professor</h4>
-      </div>
+<card state="professor">
+  <div class="media">
+    <div class="media-left">
+      <i class="fa fa-plus fa-5x media-object"></i>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">Novo Professor</h4>
     </div>
   </div>
-</div>
-<div class="panel panel-default col-sm-3" ng-repeat="professor in $ctrl.professores">
-  <div class="panel-body">
-    <div class="media">
-      <div class="media-left">
-        <a href="javascript:void(0)">
-          <img ng-src="{{professor.foto}}" style="width: 64px;" class="img-circle">
-        </a>
-      </div>
-      <div class="media-body">
-        <h4 class="media-heading">{{professor.nome}}</h4>
-        {{professor.email}}
-      </div>
+</card>
+
+<card ng-repeat="professor in $ctrl.professores">
+  <div class="media">
+    <div class="media-left">
+      <a href="javascript:void(0)">
+        <img ng-src="{{professor.foto}}" style="width: 70px;" class="img-circle">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">{{professor.nome}}</h4>
+      {{professor.email}}
     </div>
   </div>
-</div>
+</card>

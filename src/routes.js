@@ -35,6 +35,11 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       template: '<professor></professor>',
       auth: true
     })
+    .state('aulas', {
+      url: '/aulas',
+      template: '<aulas></aulas>',
+      auth: true
+    })
     .state('login', {
       url: '/login',
       template: '<login></login>',

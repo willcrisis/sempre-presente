@@ -11,12 +11,12 @@ class ProfessorService {
 
   add(aluno) {
     this.professores.$add(aluno);
-    return this.listAlunos();
+    return this.list();
   }
 
   remove(aluno) {
     this.professores.$remove(aluno);
-    return this.listAlunos();
+    return this.list();
   }
 }
 

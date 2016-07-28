@@ -3,8 +3,10 @@ class Professores {
   constructor(professorService, usuarioService) {
     this.professorService = professorService;
     this.professores = [];
-    this.professorService.list().forEach(professor => {
-      this.professores.push(usuarioService.get(professor));
+    this.professorService.list().$loaded().then(lista => {
+      lista.forEach(professor => {
+        this.professores.push(usuarioService.get(professor.$value));
+      });
     });
   }
 }

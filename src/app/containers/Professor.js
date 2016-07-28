@@ -4,19 +4,21 @@ class Professor {
     this.stateService = $state;
     this.professorService = professorService;
     this.usuarios = [];
-    usuarioService.list().forEach(usuario => {
-      if (this.professorService.list().indexOf(usuario.uid) == -1) {
-        this.usuarios.push(usuario)
-      }
-    })
+    usuarioService.list().$loaded().then(usuarios => {
+      this.professorService.list().$loaded().then(lista => {
+        usuarios.forEach(usuario => {
+          if (lista.map(professor => {
+              return professor.$value
+            }).indexOf(usuario.$id) == -1) {
+            this.usuarios.push(usuario)
+          }
+        });
+      });
+    });
   }
 
-  save(aluno) {
-    if (aluno.$id) {
-      this.alunoService.editAluno(aluno);
-    } else {
-      this.alunoService.addAluno(aluno);
-    }
+  save(id) {
+    this.professorService.add(id);
     this.stateService.go('professores');
   }
 }
