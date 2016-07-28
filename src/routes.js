@@ -1,3 +1,10 @@
+class AlunoRoute {
+  /** @ngInject */
+  constructor($stateParams) {
+    this.id = $stateParams.id;
+  }
+}
+
 angular
   .module('app')
   .config(routesConfig);
@@ -45,11 +52,4 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       template: '<login></login>',
       auth: false
     });
-}
-
-class AlunoRoute {
-  /** @ngInject */
-  constructor($stateParams) {
-    this.id = $stateParams.id;
-  }
 }

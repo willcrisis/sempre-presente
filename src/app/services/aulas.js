@@ -2,8 +2,7 @@ class AulaService {
 
   /** @ngInject */
   constructor($firebaseArray) {
-    let ref = firebase.database().ref().child('aulas');
-    this.aulas = $firebaseArray(ref);
+    this.aulas = $firebaseArray(firebase.database().ref().child('aulas'));
   }
 
   list() {
@@ -11,8 +10,10 @@ class AulaService {
   }
 
   get(id) {
-    let encontrado = this.aulas.$getRecord(id);
-    encontrado ? encontrado.data = convertNumberToDate(encontrado.data) : null;
+    const encontrado = this.aulas.$getRecord(id);
+    if (encontrado) {
+      encontrado.data = convertNumberToDate(encontrado.data);
+    }
     return encontrado;
   }
 

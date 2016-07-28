@@ -1,8 +1,7 @@
 class ProfessorService {
   /** @ngInject */
   constructor($firebaseArray) {
-    let ref = firebase.database().ref().child('professores');
-    this.professores = $firebaseArray(ref);
+    this.professores = $firebaseArray(firebase.database().ref().child('professores'));
   }
 
   list() {
@@ -19,7 +18,6 @@ class ProfessorService {
     return this.list();
   }
 }
-
 
 angular
   .module('app')

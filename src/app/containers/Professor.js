@@ -6,11 +6,12 @@ class Professor {
     this.usuarios = [];
     usuarioService.list().$loaded().then(usuarios => {
       this.professorService.list().$loaded().then(lista => {
+        const values = lista.map(professor => {
+          return professor.$value;
+        });
         usuarios.forEach(usuario => {
-          if (lista.map(professor => {
-              return professor.$value
-            }).indexOf(usuario.$id) == -1) {
-            this.usuarios.push(usuario)
+          if (values.indexOf(usuario.$id) === -1) {
+            this.usuarios.push(usuario);
           }
         });
       });

@@ -14,13 +14,25 @@ class Login {
 
   loginComGoogle() {
     this.authService.loginWithGoogle().then(service => {
-      let usuario = this.usuarioService.get(service.uid);
-      usuario.nome = service.displayName;
-      usuario.email = service.email;
-      usuario.foto = service.photoURL;
-      usuario.$save();
+      this.salvarUsuario(service);
       this.stateService.go('app');
     });
+  }
+
+  loginComFacebook() {
+    this.authService.loginWithFacebook().then(service => {
+      console.log(service);
+      this.salvarUsuario(service);
+      this.stateService.go('app');
+    });
+  }
+
+  salvarUsuario(service) {
+    const usuario = this.usuarioService.get(service.uid);
+    usuario.nome = service.displayName;
+    usuario.email = service.email;
+    usuario.foto = service.photoURL;
+    usuario.$save();
   }
 }
 
