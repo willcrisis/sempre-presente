@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+    <title>FountainJS</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/png" href="http://fountainjs.io/assets/imgs/fountain.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles/vendor-099ef2cd9a.css">
+
+    <link rel="stylesheet" href="styles/app-52694ebd9f.css">
+  </head>
+
+
+  <body ng-app="app">
+    <menu></menu>
+    <div class="container-fluid">
+      <ui-view></ui-view>
+    </div>
+  </body>
+
+  <script src="scripts/vendor-a923e542dd.js"></script>
+
+  <script src="scripts/app-1561dbe6eb.js"></script>
+
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCnRX9AZXDpB5XAQufzlTOGr5iSACcKfFU",
+      authDomain: "sempre-presente-ec920.firebaseapp.com",
+      databaseURL: "https://sempre-presente-ec920.firebaseio.com",
+      storageBucket: "sempre-presente-ec920.appspot.com"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</html>
+
