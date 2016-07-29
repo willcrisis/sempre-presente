@@ -1,0 +1,13 @@
+<card tamanho="{{$ctrl.tamanho}}">
+  <div class="media">
+    <div class="media-left">
+      <a href="javascript:void(0)">
+        <img ng-src="{{$ctrl.usuario.foto}}" style="width: 70px;" class="img-circle">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">{{$ctrl.usuario.nome}}</h4>
+      {{$ctrl.usuario.email}}
+    </div>
+  </div>
+</card>

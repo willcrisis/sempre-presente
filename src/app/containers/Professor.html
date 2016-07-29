@@ -1,15 +1,1 @@
-<div class="panel panel-default col-sm-3" ng-repeat="usuario in $ctrl.usuarios" ng-click="$ctrl.save(usuario.$id)">
-  <div class="panel-body">
-    <div class="media">
-      <div class="media-left">
-        <a href="javascript:void(0)">
-          <img ng-src="{{usuario.foto}}" style="width: 64px;" class="img-circle">
-        </a>
-      </div>
-      <div class="media-body">
-        <h4 class="media-heading">{{usuario.nome}}</h4>
-        {{usuario.email}}
-      </div>
-    </div>
-  </div>
-</div>
+<card-usuario ng-repeat="usuario in $ctrl.usuarios" usuario="usuario" ng-click="$ctrl.save(usuario.$id)"></card-usuario>

@@ -1,8 +1,8 @@
 class AulaService {
 
   /** @ngInject */
-  constructor($firebaseArray) {
-    this.aulas = $firebaseArray(firebase.database().ref().child('aulas'));
+  constructor($firebaseArray, dataService) {
+    this.aulas = $firebaseArray(dataService.aulas);
   }
 
   list() {

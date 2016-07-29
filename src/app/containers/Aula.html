@@ -1,0 +1,11 @@
+<form name="aulaForm" ng-submit="aulaForm.$valid && $ctrl.save($ctrl.aula)">
+  <labeled-input label="Data" name="data" ng-model="$ctrl.aula.data"
+                 ng-required="true" type="date"></labeled-input>
+  <labeled-input label="Lição" name="licao" ng-model="$ctrl.aula.licao" ng-required="true"></labeled-input>
+  <labeled-input label="Observações" name="observacoes" ng-model="$ctrl.aula.observacoes"></labeled-input>
+
+  <div class="action-buttons">
+    <button type="button" class="btn btn-default">Cancelar</button>
+    <button class="btn btn-primary" type="submit">Salvar</button>
+  </div>
+</form>

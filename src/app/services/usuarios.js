@@ -1,10 +1,11 @@
 class UsuarioService {
 
   /** @ngInject */
-  constructor($firebaseArray, $firebaseObject, auth) {
-    this.usuarios = $firebaseArray(firebase.database().ref().child('usuarios'));
+  constructor($firebaseArray, $firebaseObject, auth, dataService) {
+    this.usuarios = $firebaseArray(dataService.usuarios);
     this.firebaseObjectService = $firebaseObject;
     this.authService = auth;
+    this.dataService = dataService;
   }
 
   list() {
@@ -15,7 +16,7 @@ class UsuarioService {
     if (!id) {
       id = this.authService.uid;
     }
-    return this.firebaseObjectService(firebase.database().ref().child('usuarios').child(id));
+    return this.firebaseObjectService(this.dataService.usuarios.child(id));
   }
 
   add(usuario) {

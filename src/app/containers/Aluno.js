@@ -3,14 +3,14 @@ class Aluno {
   constructor($state, alunoService) {
     this.stateService = $state;
     this.alunoService = alunoService;
-    this.aluno = this.id ? this.alunoService.getAluno(this.id) : {};
+    this.aluno = this.id ? this.alunoService.get(this.id) : {};
   }
 
   save(aluno) {
     if (aluno.$id) {
-      this.alunoService.editAluno(aluno);
+      this.alunoService.edit(aluno);
     } else {
-      this.alunoService.addAluno(aluno);
+      this.alunoService.add(aluno);
     }
     this.stateService.go('alunos');
   }

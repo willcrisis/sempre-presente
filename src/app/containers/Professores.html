@@ -1,4 +1,4 @@
-<card state="professor">
+<card ui-sref="professor">
   <div class="media">
     <div class="media-left">
       <i class="fa fa-plus fa-5x media-object"></i>
@@ -9,16 +9,4 @@
   </div>
 </card>
 
-<card ng-repeat="professor in $ctrl.professores">
-  <div class="media">
-    <div class="media-left">
-      <a href="javascript:void(0)">
-        <img ng-src="{{professor.foto}}" style="width: 70px;" class="img-circle">
-      </a>
-    </div>
-    <div class="media-body">
-      <h4 class="media-heading">{{professor.nome}}</h4>
-      {{professor.email}}
-    </div>
-  </div>
-</card>
+<card-usuario ng-repeat="professor in $ctrl.professores" usuario="professor"></card-usuario>

@@ -5,6 +5,13 @@ class AlunoRoute {
   }
 }
 
+class AulaRoute {
+  /** @ngInject */
+  constructor($stateParams) {
+    this.id = $stateParams.id;
+  }
+}
+
 angular
   .module('app')
   .config(routesConfig);
@@ -45,6 +52,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('aulas', {
       url: '/aulas',
       template: '<aulas></aulas>',
+      auth: true
+    })
+    .state('aula', {
+      url: '/aula/:id',
+      controller: AulaRoute,
+      controllerAs: 'ctrl',
+      template: '<aula id="ctrl.id"></aula>',
       auth: true
     })
     .state('login', {

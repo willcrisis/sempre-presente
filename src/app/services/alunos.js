@@ -1,15 +1,15 @@
 class AlunoService {
 
   /** @ngInject */
-  constructor($firebaseArray) {
-    this.alunos = $firebaseArray(firebase.database().ref().child('alunos'));
+  constructor($firebaseArray, dataService) {
+    this.alunos = $firebaseArray(dataService.alunos);
   }
 
-  listAlunos() {
+  list() {
     return this.alunos;
   }
 
-  getAluno(id) {
+  get(id) {
     const encontrado = this.alunos.$getRecord(id);
     if (encontrado) {
       encontrado.dataNascimento = convertNumberToDate(encontrado.dataNascimento);
@@ -17,21 +17,21 @@ class AlunoService {
     return encontrado;
   }
 
-  addAluno(aluno) {
+  add(aluno) {
     aluno.dataNascimento = aluno.dataNascimento.getTime();
     this.alunos.$add(aluno);
-    return this.listAlunos();
+    return this.list();
   }
 
-  editAluno(aluno) {
+  edit(aluno) {
     aluno.dataNascimento = aluno.dataNascimento.getTime();
     this.alunos.$save(aluno);
-    return this.listAlunos();
+    return this.list();
   }
 
-  deleteAluno(aluno) {
+  remove(aluno) {
     this.alunos.$remove(aluno);
-    return this.listAlunos();
+    return this.list();
   }
 }
 

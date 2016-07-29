@@ -1,6 +1,6 @@
 class Card {
   constructor() {
-    this.tamanho = this.tamanho || 3;
+    this.tamanho = this.tamanho || 12;
   }
 }
 

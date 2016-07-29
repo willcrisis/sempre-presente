@@ -1,7 +1,7 @@
 class ProfessorService {
   /** @ngInject */
-  constructor($firebaseArray) {
-    this.professores = $firebaseArray(firebase.database().ref().child('professores'));
+  constructor($firebaseArray, dataService) {
+    this.professores = $firebaseArray(dataService.professores);
   }
 
   list() {
