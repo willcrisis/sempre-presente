@@ -46,7 +46,7 @@ class ProfessorService {
     return this.list();
   }
 
-  remove(aluno) {
+  remove(id) {
     const professor = this.get(id);
     professor.$remove();
     return this.list();
