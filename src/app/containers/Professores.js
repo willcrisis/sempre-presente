@@ -1,13 +1,7 @@
 class Professores {
   /** @ngInject */
-  constructor(professorService, usuarioService) {
-    this.professorService = professorService;
-    this.professores = [];
-    this.professorService.list().$loaded().then(lista => {
-      lista.forEach(professor => {
-        this.professores.push(usuarioService.get(professor.$value));
-      });
-    });
+  constructor(professorService) {
+    this.professores = professorService.list();
   }
 }
 

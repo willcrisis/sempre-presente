@@ -1,20 +1,10 @@
 class Professor {
   /** @ngInject */
-  constructor($state, professorService, usuarioService) {
+  constructor($state, professorService) {
     this.stateService = $state;
     this.professorService = professorService;
-    this.usuarios = [];
-    usuarioService.list().$loaded().then(usuarios => {
-      this.professorService.list().$loaded().then(lista => {
-        const values = lista.map(professor => {
-          return professor.$value;
-        });
-        usuarios.forEach(usuario => {
-          if (values.indexOf(usuario.$id) === -1) {
-            this.usuarios.push(usuario);
-          }
-        });
-      });
+    professorService.listNotProfessores().then(lista => {
+      this.usuarios = lista;
     });
   }
 

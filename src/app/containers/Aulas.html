@@ -1,6 +1,6 @@
 <p>
   <a href="javascript:void(0)" ui-sref="aula" class="btn btn-default">Nova Aula</a>
 </p>
-<card ng-repeat="item in $ctrl.aulaService.list()" ui-sref="aula({id: item.id})">
-  {{item.data | date}}
+<card ng-repeat="item in $ctrl.aulaService.list()" ui-sref="aula({id: item.$id})">
+  {{item.data | date:'dd/MM/yyyy - EEEE'}}
 </card>

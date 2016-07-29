@@ -19,7 +19,7 @@ class AulaService {
 
   add(aula) {
     aula.data = aula.data.getTime();
-    this.aulas.$add(aluno);
+    this.aulas.$add(aula);
     return this.list();
   }
 

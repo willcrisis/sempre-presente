@@ -1,8 +1,30 @@
 <form name="aulaForm" ng-submit="aulaForm.$valid && $ctrl.save($ctrl.aula)">
   <labeled-input label="Data" name="data" ng-model="$ctrl.aula.data"
                  ng-required="true" type="date"></labeled-input>
+
+  <div class="form-group">
+    <label class="control-label">Professores</label>
+    <div class="list-group">
+      <li class="list-group-item" ng-repeat="item in $ctrl.professores"
+          ng-class="{'active': $ctrl.aula.professores[item.$id] !== undefined}" ng-click="$ctrl.toggle(item.$id)">
+        <imagem-usuario usuario="item"></imagem-usuario> {{item.nome}}
+      </li>
+    </div>
+  </div>
+
+  <label class="control-label">Alunos</label>
+  <div class="form-group" ng-repeat="item in $ctrl.alunos">
+    <div class="input-group">
+      <span class="input-group-btn" style="width: 70%;">
+        <button class="btn btn-default" style="width: 100%" type="button" ng-class="{'active': $ctrl.aula.alunos[item.$id] !== undefined}" ng-click="$ctrl.toggleAluno(item.$id)">{{item.nome}}</button>
+      </span>
+      <input type="number" class="form-control" placeholder="Moedas..." name="moedas-{{item.$id}}"
+             ng-disabled="$ctrl.aula.alunos[item.$id] === undefined" ng-model="$ctrl.aula.alunos[item.$id]">
+    </div>
+  </div>
+
   <labeled-input label="Lição" name="licao" ng-model="$ctrl.aula.licao" ng-required="true"></labeled-input>
-  <labeled-input label="Observações" name="observacoes" ng-model="$ctrl.aula.observacoes"></labeled-input>
+  <labeled-textarea label="Observações" name="observacoes" ng-model="$ctrl.aula.observacoes"></labeled-textarea>
 
   <div class="action-buttons">
     <button type="button" class="btn btn-default">Cancelar</button>
