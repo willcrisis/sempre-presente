@@ -1,40 +1,47 @@
 <!doctype html>
 <html>
-  <head>
-    <base href="/">
-    <meta charset="utf-8">
-    <title>SemprePresente</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <link rel="icon" type="image/png" href="http://fountainjs.io/assets/imgs/fountain.png">
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <title>SemprePresente</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" href="http://fountainjs.io/assets/imgs/fountain.png">
 
-    <link rel="stylesheet" href="styles/vendor.css">
+  <link rel="stylesheet" href="styles/vendor.css">
 
-    <link rel="stylesheet" href="styles/app.css">
-  </head>
+  <link rel="stylesheet" href="styles/app.css">
+</head>
 
+<body ng-app="app">
+<div growl></div>
+<menu></menu>
+<div class="container-fluid">
+  <ui-view></ui-view>
+</div>
+</body>
 
-  <body ng-app="app">
-    <menu></menu>
-    <div class="container-fluid">
-      <ui-view></ui-view>
-    </div>
-  </body>
+<script src="scripts/vendor.js"></script>
 
-  <script src="scripts/vendor.js"></script>
+<script src="scripts/app.js"></script>
 
-  <script src="scripts/app.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCnRX9AZXDpB5XAQufzlTOGr5iSACcKfFU",
+    authDomain: "sempre-presente-ec920.firebaseapp.com",
+    databaseURL: "https://sempre-presente-ec920.firebaseio.com",
+    storageBucket: "sempre-presente-ec920.appspot.com"
+  };
+  firebase.initializeApp(config);
 
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyCnRX9AZXDpB5XAQufzlTOGr5iSACcKfFU",
-      authDomain: "sempre-presente-ec920.firebaseapp.com",
-      databaseURL: "https://sempre-presente-ec920.firebaseio.com",
-      storageBucket: "sempre-presente-ec920.appspot.com"
-    };
-    firebase.initializeApp(config);
-  </script>
-
+//  if ('serviceWorker' in navigator) {
+  //    navigator.serviceWorker
+  //      .register('/service-worker.js')
+  //      .then(function () {
+  //        console.log("Service Worker Registered");
+  //      });
+  //  }
+</script>
 </html>
 
