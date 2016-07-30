@@ -1,57 +1,64 @@
 <!doctype html>
 <html>
-  <head>
-    <base href="/">
-    <meta charset="utf-8">
-    <title>SemprePresente</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <link rel="icon" type="image/png" href="http://fountainjs.io/assets/imgs/fountain.png" />
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <title>SemprePresente</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" href="http://fountainjs.io/assets/imgs/fountain.png"/>
 
-    <!-- build:css({.tmp,src}) styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
-    <!-- endbower -->
-    <!-- endbuild -->
-
-    <!-- build:css({.tmp,src}) styles/app.css -->
-    <link rel="stylesheet" href="index.css"/>
-    <!-- endbuild -->
-  </head>
-
-  <body ng-app="app">
-    <div growl></div>
-    <menu></menu>
-    <div class="container-fluid">
-      <ui-view></ui-view>
-    </div>
-  </body>
-
-  <!-- build:js({.tmp,src}) scripts/vendor.js -->
-  <!-- bower:js -->
-  <!-- run `gulp inject` to automatically populate bower script dependencies -->
+  <!-- build:css({.tmp,src}) styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- run `gulp inject` to automatically populate bower styles dependencies -->
   <!-- endbower -->
   <!-- endbuild -->
 
-  <!-- build:js({.tmp,src}) scripts/app.js -->
-  <!-- inject:js -->
-  <!-- js files will be automatically insert here -->
-  <!-- endinject -->
-  <!-- inject:partials -->
-  <!-- angular templates will be automatically converted in js and inserted here -->
-  <!-- endinject -->
+  <!-- build:css({.tmp,src}) styles/app.css -->
+  <link rel="stylesheet" href="index.css"/>
   <!-- endbuild -->
+</head>
 
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyCnRX9AZXDpB5XAQufzlTOGr5iSACcKfFU",
-      authDomain: "sempre-presente-ec920.firebaseapp.com",
-      databaseURL: "https://sempre-presente-ec920.firebaseio.com",
-      storageBucket: "sempre-presente-ec920.appspot.com"
-    };
-    firebase.initializeApp(config);
-  </script>
+<body ng-app="app">
+<div growl></div>
+<menu></menu>
+<div class="container-fluid">
+  <ui-view></ui-view>
+</div>
+</body>
 
+<!-- build:js({.tmp,src}) scripts/vendor.js -->
+<!-- bower:js -->
+<!-- run `gulp inject` to automatically populate bower script dependencies -->
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,src}) scripts/app.js -->
+<!-- inject:js -->
+<!-- js files will be automatically insert here -->
+<!-- endinject -->
+<!-- inject:partials -->
+<!-- angular templates will be automatically converted in js and inserted here -->
+<!-- endinject -->
+<!-- endbuild -->
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCnRX9AZXDpB5XAQufzlTOGr5iSACcKfFU",
+    authDomain: "sempre-presente-ec920.firebaseapp.com",
+    databaseURL: "https://sempre-presente-ec920.firebaseio.com",
+    storageBucket: "sempre-presente-ec920.appspot.com"
+  };
+  firebase.initializeApp(config);
+
+//  if ('serviceWorker' in navigator) {
+  //    navigator.serviceWorker
+  //      .register('/service-worker.js')
+  //      .then(function () {
+  //        console.log("Service Worker Registered");
+  //      });
+  //  }
+</script>
 </html>
 

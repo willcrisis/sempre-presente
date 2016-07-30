@@ -16,18 +16,22 @@ function AppConfig(growlProvider) {
 /** @ngInject */
 function AppRun(authConf, $state, growl, auth, usuarioService) {
   authConf.setRolesSupport(true);
-  authConf.setFunctionIfDenied(() => {
-    growl.warning('Você não possui permissão para ver esta página.');
-    $state.go('app');
+  authConf.setFunctionIfDenied(($state, toState) => {
+    if (toState.name !== 'app') {
+      growl.warning('Você não possui permissão para ver esta página.');
+    }
+    if (auth.loggedIn) {
+      $state.go('app');
+    } else {
+      $state.go('login');
+    }
   });
 
-  console.log(auth);
   if (auth.loggedIn) {
     usuarioService.get(auth.uid).$loaded().then(usuario => {
-      console.log(usuario);
       if (usuario.permissoes) {
         auth.roles = [];
-        for (var key in usuario.permissoes) {
+        for (const key in usuario.permissoes) {
           auth.roles.push(key);
         }
       }

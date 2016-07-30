@@ -32,8 +32,8 @@ class Login {
       usuario.email = service.email;
       usuario.foto = service.photoURL;
       if (usuario.permissoes) {
+        service.roles = [];
         for (var key in usuario.permissoes) {
-          console.log(key);
           service.roles.push(key);
         }
       }

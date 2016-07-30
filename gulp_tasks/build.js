@@ -1,8 +1,6 @@
 const gulp = require('gulp');
 const filter = require('gulp-filter');
 const useref = require('gulp-useref');
-const rev = require('gulp-rev');
-const revReplace = require('gulp-rev-replace');
 const uglify = require('gulp-uglify');
 const cssnano = require('gulp-cssnano');
 const htmlmin = require('gulp-htmlmin');
@@ -34,16 +32,13 @@ function build() {
     .pipe(sourcemaps.init())
     .pipe(ngAnnotate())
     .pipe(uglify({preserveComments: uglifySaveLicense})).on('error', conf.errorHandler('Uglify'))
-    // .pipe(rev())
     .pipe(sourcemaps.write('maps'))
     .pipe(jsFilter.restore)
     .pipe(cssFilter)
     .pipe(sourcemaps.init())
     .pipe(cssnano())
-    // .pipe(rev())
     .pipe(sourcemaps.write('maps'))
     .pipe(cssFilter.restore)
-    // .pipe(revReplace())
     .pipe(htmlFilter)
     .pipe(htmlmin())
     .pipe(htmlFilter.restore)
