@@ -7,7 +7,8 @@
     <div class="list-group">
       <li class="list-group-item" ng-repeat="item in $ctrl.professores"
           ng-class="{'active': $ctrl.aula.professores[item.$id] !== undefined}" ng-click="$ctrl.toggle(item.$id)">
-        <imagem-usuario usuario="item"></imagem-usuario> {{item.nome}}
+        <imagem-usuario usuario="item"></imagem-usuario>
+        {{item.nome}}
       </li>
     </div>
   </div>
@@ -16,9 +17,13 @@
   <div class="form-group" ng-repeat="item in $ctrl.alunos">
     <div class="input-group">
       <span class="input-group-btn" style="width: 70%;">
-        <button class="btn btn-default" style="width: 100%" type="button" ng-class="{'active': $ctrl.aula.alunos[item.$id] !== undefined}" ng-click="$ctrl.toggleAluno(item.$id)">{{item.nome}}</button>
+        <button class="btn btn-default" style="width: 100%" type="button"
+                ng-class="{'active': $ctrl.aula.alunos[item.$id] !== undefined}" ng-click="$ctrl.toggleAluno(item.$id)">
+          {{item.nome}}
+        </button>
       </span>
       <input type="number" class="form-control" placeholder="Moedas..." name="moedas-{{item.$id}}"
+             ng-required="$ctrl.aula.alunos[item.$id] !== undefined"
              ng-disabled="$ctrl.aula.alunos[item.$id] === undefined" ng-model="$ctrl.aula.alunos[item.$id]">
     </div>
   </div>

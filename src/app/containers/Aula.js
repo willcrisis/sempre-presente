@@ -27,7 +27,7 @@ class Aula {
 
   toggleAluno(id) {
     if (this.aula.alunos[id] === undefined) {
-      this.aula.alunos[id] = 0;
+      this.aula.alunos[id] = null;
     } else {
       delete this.aula.alunos[id];
     }

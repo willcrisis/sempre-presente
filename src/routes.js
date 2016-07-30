@@ -30,36 +30,36 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('alunos', {
       url: '/alunos',
       template: '<alunos></alunos>',
-      auth: true
+      auth: ['PROFESSOR', 'ADMIN']
     })
     .state('professores', {
       url: '/professores',
       template: '<professores></professores>',
-      auth: true
+      auth: ['ADMIN']
     })
     .state('aluno', {
       url: '/aluno/:id',
       controller: AlunoRoute,
       controllerAs: 'ctrl',
       template: '<aluno id="ctrl.id"></aluno>',
-      auth: true
+      auth: ['PROFESSOR', 'ADMIN']
     })
     .state('professor', {
       url: '/professor',
       template: '<professor></professor>',
-      auth: true
+      auth: ['ADMIN']
     })
     .state('aulas', {
       url: '/aulas',
       template: '<aulas></aulas>',
-      auth: true
+      auth: ['PROFESSOR', 'ADMIN']
     })
     .state('aula', {
       url: '/aula/:id',
       controller: AulaRoute,
       controllerAs: 'ctrl',
       template: '<aula id="ctrl.id"></aula>',
-      auth: true
+      auth: ['PROFESSOR', 'ADMIN']
     })
     .state('login', {
       url: '/login',

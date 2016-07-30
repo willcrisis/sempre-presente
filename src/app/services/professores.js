@@ -10,6 +10,7 @@ class ProfessorService {
     this.professores = $firebaseArray(professores.ref());
     this.firebaseObjectService = $firebaseObject;
     this.usuarios = usuarioService.list();
+    this.usuarioService = usuarioService;
   }
 
   get(id) {
@@ -43,6 +44,15 @@ class ProfessorService {
     const professor = this.get(id);
     professor.$value = true;
     professor.$save();
+
+    this.usuarioService.get(id).$loaded().then(usuario => {
+      if (!usuario.permissoes) {
+        usuario.permissoes = {};
+      }
+      usuario.permissoes['PROFESSOR'] = true;
+      usuario.$save();
+    });
+
     return this.list();
   }
 

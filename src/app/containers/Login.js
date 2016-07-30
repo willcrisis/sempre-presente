@@ -21,18 +21,24 @@ class Login {
 
   loginComFacebook() {
     this.authService.loginWithFacebook().then(service => {
-      console.log(service);
       this.salvarUsuario(service);
       this.stateService.go('app');
     });
   }
 
   salvarUsuario(service) {
-    const usuario = this.usuarioService.get(service.uid);
-    usuario.nome = service.displayName;
-    usuario.email = service.email;
-    usuario.foto = service.photoURL;
-    usuario.$save();
+    this.usuarioService.get(service.uid).$loaded().then(usuario => {
+      usuario.nome = service.displayName;
+      usuario.email = service.email;
+      usuario.foto = service.photoURL;
+      if (usuario.permissoes) {
+        for (var key in usuario.permissoes) {
+          console.log(key);
+          service.roles.push(key);
+        }
+      }
+      usuario.$save();
+    });
   }
 }
 

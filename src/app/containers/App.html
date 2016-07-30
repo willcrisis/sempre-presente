@@ -1,6 +1,20 @@
-<card ui-sref="aluno">Novo Aluno</card>
-<card ui-sref="aula">Nova Aula</card>
-<card ui-sref="aulas">Aulas</card>
-<card ui-sref="alunos">Alunos</card>
-<card ui-sref="professores">Professores</card>
-<card ui-sref="professor">Novo Professor</card>
+<auth-has-any-role roles="PROFESSOR,ADMIN">
+  <card ui-sref="aluno">Novo Aluno</card>
+</auth-has-any-role>
+<auth-has-any-role roles="PROFESSOR,ADMIN">
+  <card ui-sref="aula">Nova Aula</card>
+</auth-has-any-role>
+<auth-has-any-role roles="PROFESSOR,ADMIN">
+  <card ui-sref="aulas">Aulas</card>
+</auth-has-any-role>
+<auth-has-any-role roles="PROFESSOR,ADMIN">
+  <card ui-sref="alunos">Alunos</card>
+</auth-has-any-role>
+
+<auth-has-role role="ADMIN">
+  <card ui-sref="professores">Professores</card>
+</auth-has-role>
+<auth-has-role role="ADMIN">
+  <card ui-sref="professor">Novo Professor</card>
+</auth-has-role>
+
