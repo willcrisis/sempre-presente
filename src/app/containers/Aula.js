@@ -11,10 +11,12 @@ class Aula {
   save(aula) {
     if (aula.$id) {
       this.aulaService.edit(aula);
+      this.stateService.go('aulaConsulta', {id: aula.$id});
     } else {
-      this.aulaService.add(aula);
+      this.aulaService.add(aula).then(aula => {
+        this.stateService.go('aulaConsulta', {id: aula.$id});
+      });
     }
-    this.stateService.go('aulas');
   }
 
   toggle(id) {
@@ -27,7 +29,7 @@ class Aula {
 
   toggleAluno(id) {
     if (this.aula.alunos[id] === undefined) {
-      this.aula.alunos[id] = null;
+      this.aula.alunos[id] = 2;
     } else {
       delete this.aula.alunos[id];
     }

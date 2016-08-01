@@ -1,8 +1,9 @@
 class AulaService {
 
   /** @ngInject */
-  constructor($firebaseArray, dataService) {
+  constructor($firebaseArray, dataService, $firebaseObject) {
     this.aulas = $firebaseArray(dataService.aulas);
+    this.firebaseObjectService = $firebaseObject;
   }
 
   list() {
@@ -19,8 +20,12 @@ class AulaService {
 
   add(aula) {
     aula.data = aula.data.getTime();
-    this.aulas.$add(aula);
-    return this.list();
+    return this.aulas.$add(aula).then(aula => {
+      return this.firebaseObjectService(aula).$loaded().then(aula => {
+        aula.data = convertNumberToDate(aula.data);
+        return aula;
+      });
+    });
   }
 
   edit(aula) {

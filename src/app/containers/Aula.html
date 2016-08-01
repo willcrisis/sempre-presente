@@ -5,7 +5,7 @@
   <div class="form-group">
     <label class="control-label">Professores</label>
     <div class="list-group">
-      <li class="list-group-item" ng-repeat="item in $ctrl.professores"
+      <li class="list-group-item" ng-repeat="item in $ctrl.professores | filter:{ativo:true}"
           ng-class="{'active': $ctrl.aula.professores[item.$id] !== undefined}" ng-click="$ctrl.toggle(item.$id)">
         <imagem-usuario usuario="item"></imagem-usuario>
         {{item.nome}}
@@ -14,7 +14,7 @@
   </div>
 
   <label class="control-label">Alunos</label>
-  <div class="form-group" ng-repeat="item in $ctrl.alunos">
+  <div class="form-group" ng-repeat="item in $ctrl.alunos | filter:{ativo: true}">
     <div class="input-group">
       <span class="input-group-btn" style="width: 70%;">
         <button class="btn btn-default" style="width: 100%" type="button"
@@ -23,7 +23,7 @@
         </button>
       </span>
       <input type="number" class="form-control" placeholder="Moedas..." name="moedas-{{item.$id}}"
-             ng-required="$ctrl.aula.alunos[item.$id] !== undefined"
+             ng-required="$ctrl.aula.alunos[item.$id] !== undefined" min="1"
              ng-disabled="$ctrl.aula.alunos[item.$id] === undefined" ng-model="$ctrl.aula.alunos[item.$id]">
     </div>
   </div>
@@ -32,7 +32,7 @@
   <labeled-textarea label="Observações" name="observacoes" ng-model="$ctrl.aula.observacoes"></labeled-textarea>
 
   <div class="action-buttons">
-    <button type="button" class="btn btn-default">Cancelar</button>
+    <button type="button" class="btn btn-default" ui-sref="aulas">Cancelar</button>
     <button class="btn btn-primary" type="submit">Salvar</button>
   </div>
 </form>

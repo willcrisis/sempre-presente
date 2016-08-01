@@ -32,7 +32,9 @@ function AppRun(authConf, $state, growl, auth, usuarioService) {
       if (usuario.permissoes) {
         auth.roles = [];
         for (const key in usuario.permissoes) {
-          auth.roles.push(key);
+          if (usuario.permissoes.hasOwnProperty(key)) {
+            auth.roles.push(key);
+          }
         }
       }
     });
