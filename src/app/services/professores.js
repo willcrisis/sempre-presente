@@ -6,7 +6,7 @@ class ProfessorService {
       dataService.professores,
       dataService.usuarios
     );
-    professores.select('usuarios.nome', 'usuarios.foto', 'usuarios.email');
+    professores.select('usuarios.nome', 'usuarios.foto', 'usuarios.email', {key: "professores.$value", alias: "ativo"});
     this.professores = $firebaseArray(professores.ref());
     this.firebaseObjectService = $firebaseObject;
     this.usuarios = usuarioService.list();
@@ -49,7 +49,7 @@ class ProfessorService {
       if (!usuario.permissoes) {
         usuario.permissoes = {};
       }
-      usuario.permissoes['PROFESSOR'] = true;
+      usuario.permissoes.PROFESSOR = true;
       usuario.$save();
     });
 

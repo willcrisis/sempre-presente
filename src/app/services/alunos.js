@@ -2,7 +2,7 @@ class AlunoService {
 
   /** @ngInject */
   constructor($firebaseArray, dataService) {
-    this.alunos = $firebaseArray(dataService.alunos);
+    this.alunos = $firebaseArray(dataService.alunos.orderByChild('ativo'));
   }
 
   list() {

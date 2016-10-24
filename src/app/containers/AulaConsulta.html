@@ -1,0 +1,35 @@
+<form name="aulaForm">
+  <labeled-input label="Data" name="data" ng-model="$ctrl.aula.data"
+                 ng-readonly="true" type="date"></labeled-input>
+
+  <div class="form-group">
+    <label class="control-label">Professores</label>
+    <div class="list-group">
+      <li class="list-group-item active" ng-repeat="item in $ctrl.professores">
+        <imagem-usuario usuario="item"></imagem-usuario>
+        {{item.nome}}
+      </li>
+    </div>
+  </div>
+
+  <label class="control-label">Alunos</label>
+  <div class="form-group" ng-repeat="item in $ctrl.alunos">
+    <div class="input-group">
+      <span class="input-group-btn" style="width: 70%;">
+        <button class="btn btn-default" style="width: 100%" type="button">
+          {{item.nome}}
+        </button>
+      </span>
+      <input type="number" class="form-control" placeholder="Moedas..." name="moedas-{{item.$id}}"
+             ng-readonly="true" ng-model="item.moedas">
+    </div>
+  </div>
+
+  <labeled-input label="Lição" name="licao" ng-model="$ctrl.aula.licao" ng-readonly="true"></labeled-input>
+  <labeled-textarea label="Observações" name="observacoes" ng-model="$ctrl.aula.observacoes" ng-readonly="true"></labeled-textarea>
+
+  <div class="action-buttons">
+    <button type="button" class="btn btn-default" ui-sref="aulas">Cancelar</button>
+    <button class="btn btn-default" type="button" ui-sref="aula({id: $ctrl.aula.$id})">Editar</button>
+  </div>
+</form>
